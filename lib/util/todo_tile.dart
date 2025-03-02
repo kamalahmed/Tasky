@@ -10,7 +10,7 @@ class ToDoTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(15.0),
+      padding: const EdgeInsets.only(left:15, top: 15, right: 15),
       child: Container(
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
