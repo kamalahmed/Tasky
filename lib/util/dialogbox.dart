@@ -3,7 +3,9 @@ import 'package:tasky/util/todo_button.dart';
 
 class Dialogbox extends StatelessWidget {
   final controller;
-  Dialogbox({super.key, required this.controller});
+  VoidCallback onSave;
+  VoidCallback onCancel;
+  Dialogbox({super.key, required this.controller, required this.onSave, required this.onCancel});
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +24,8 @@ class Dialogbox extends StatelessWidget {
 
               children: [
                 // save button
-              TodoButton(text: 'Save', onPressed: (){}),
-              TodoButton(text: 'Cancel', onPressed: (){}),
+              TodoButton(text: 'Save', onPressed: onSave),
+              TodoButton(text: 'Cancel', onPressed: onCancel),
                 // cancel button
               ],
             )

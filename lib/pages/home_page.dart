@@ -31,9 +31,18 @@ class _HomePageState extends State<HomePage> {
     showDialog(
       context: context,
       builder: (context) {
-        return Dialogbox(controller: _controller,);
+        return Dialogbox(controller: _controller, onSave: saveNewTask, onCancel: () => Navigator.of(context).pop(),);
       },
     );
+  }
+
+  void saveNewTask() {
+    var inputText = _controller.text; // get the input field value
+    setState(() {
+          todos.insert(todos.length, [inputText, false]); // add the input value to the todos and refresh the widget
+          _controller.clear(); // clear the input field
+    });
+    print('Wrokgin on saving the data');
   }
 
   @override
