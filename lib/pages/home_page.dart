@@ -10,6 +10,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  // Text Controller to get the input
+  final _controller = TextEditingController();
+
+
   // list of todos
   List todos = [
     ["Learn Flutter Deeply", false],
@@ -27,7 +31,7 @@ class _HomePageState extends State<HomePage> {
     showDialog(
       context: context,
       builder: (context) {
-        return Dialogbox();
+        return Dialogbox(controller: _controller,);
       },
     );
   }

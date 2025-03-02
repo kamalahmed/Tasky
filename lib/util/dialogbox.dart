@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:tasky/util/todo_button.dart';
 
 class Dialogbox extends StatelessWidget {
-  const Dialogbox({super.key});
+  final controller;
+  Dialogbox({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -13,6 +14,7 @@ class Dialogbox extends StatelessWidget {
         child: Column(
           children: [
             TextField(
+              controller: controller,
               decoration: InputDecoration(border: OutlineInputBorder(), hintText: 'Task Title.....'),
             ),
             Row(
