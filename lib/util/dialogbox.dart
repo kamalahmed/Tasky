@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tasky/util/todo_button.dart';
 
 class Dialogbox extends StatelessWidget {
   const Dialogbox({super.key});
@@ -17,7 +18,8 @@ class Dialogbox extends StatelessWidget {
             Row(
               children: [
                 // save button
-
+              TodoButton(text: 'Save', onPressed: (){}),
+              TodoButton(text: 'Cancel', onPressed: (){}),
                 // cancel button
               ],
             )
