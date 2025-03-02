@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tasky/util/dialogbox.dart';
 import 'package:tasky/util/todo_tile.dart';
 
 class HomePage extends StatefulWidget {
@@ -9,7 +10,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   // list of todos
   List todos = [
     ["Learn Flutter Deeply", false],
@@ -23,20 +23,30 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  void createNewTask() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return Dialogbox();
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.amber,
-      appBar: AppBar(
-        title: Text('Tasky'),
-        elevation: 0,
-      ),
+      appBar: AppBar(title: Text('Tasky'), elevation: 0),
+      floatingActionButton: FloatingActionButton(onPressed: createNewTask, child: Icon(Icons.add),),
       body: ListView.builder(
         itemCount: todos.length,
-        itemBuilder: (BuildContext context, int index) { 
-          return ToDoTile(taskName: todos[index][0], taskCompleted: todos[index][1], onChanged: (value) => checkboxChanged(value!, index));
-       },
-        
+        itemBuilder: (BuildContext context, int index) {
+          return ToDoTile(
+            taskName: todos[index][0],
+            taskCompleted: todos[index][1],
+            onChanged: (value) => checkboxChanged(value!, index),
+          );
+        },
       ),
     );
   }
