@@ -16,6 +16,8 @@ class Dialogbox extends StatelessWidget {
               decoration: InputDecoration(border: OutlineInputBorder(), hintText: 'Task Title.....'),
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
               children: [
                 // save button
               TodoButton(text: 'Save', onPressed: (){}),
