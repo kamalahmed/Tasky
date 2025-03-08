@@ -28,6 +28,7 @@ class ToDoTile extends StatelessWidget {
               icon: Icons.delete,
               label: 'Delete',
               backgroundColor: Colors.red,
+              borderRadius: BorderRadius.circular(12),
             ),
           ],
         ),
