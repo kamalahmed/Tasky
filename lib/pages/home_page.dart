@@ -13,7 +13,6 @@ class _HomePageState extends State<HomePage> {
   // Text Controller to get the input
   final _controller = TextEditingController();
 
-
   // list of todos
   List todos = [
     ["Learn Flutter Deeply", false],
@@ -31,7 +30,11 @@ class _HomePageState extends State<HomePage> {
     showDialog(
       context: context,
       builder: (context) {
-        return Dialogbox(controller: _controller, onSave: saveNewTask, onCancel: () => Navigator.of(context).pop(),);
+        return Dialogbox(
+          controller: _controller,
+          onSave: saveNewTask,
+          onCancel: () => Navigator.of(context).pop(),
+        );
       },
     );
   }
@@ -39,10 +42,19 @@ class _HomePageState extends State<HomePage> {
   void saveNewTask() {
     var inputText = _controller.text; // get the input field value
     setState(() {
-          todos.insert(todos.length, [inputText, false]); // add the input value to the todos and refresh the widget
-          _controller.clear(); // clear the input field
+      todos.insert(todos.length, [
+        inputText,
+        false,
+      ]); // add the input value to the todos and refresh the widget
+      _controller.clear(); // clear the input field
+       Navigator.of(context).pop();
     });
-    print('Wrokgin on saving the data');
+  }
+
+  void deleteTask(index) {
+    setState(() {
+      todos.removeAt(index);
+    });
   }
 
   @override
@@ -50,7 +62,10 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.amber,
       appBar: AppBar(title: Text('Tasky'), elevation: 0),
-      floatingActionButton: FloatingActionButton(onPressed: createNewTask, child: Icon(Icons.add),),
+      floatingActionButton: FloatingActionButton(
+        onPressed: createNewTask,
+        child: Icon(Icons.add),
+      ),
       body: ListView.builder(
         itemCount: todos.length,
         itemBuilder: (BuildContext context, int index) {
@@ -58,6 +73,7 @@ class _HomePageState extends State<HomePage> {
             taskName: todos[index][0],
             taskCompleted: todos[index][1],
             onChanged: (value) => checkboxChanged(value!, index),
+            onDelete: (context) => deleteTask(index),
           );
         },
       ),
